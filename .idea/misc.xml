@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/RickAndMortyApp/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/RickAndMortyApp/app/src/main/res/layout/fragment_character_detail.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RickAndMortyApp/app/src/main/res/layout/fragment_characters.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/User/AndroidStudioProjects/RickAndMortyApp/app/src/main/res/layout/item_character.xml" value="0.2" />
       </map>

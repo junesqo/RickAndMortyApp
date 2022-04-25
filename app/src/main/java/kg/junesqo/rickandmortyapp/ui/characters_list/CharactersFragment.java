@@ -8,13 +8,16 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import kg.junesqo.rickandmortyapp.base.BaseFragment;
+import kg.junesqo.rickandmortyapp.common.OnItemClick;
 import kg.junesqo.rickandmortyapp.common.Resource;
 import kg.junesqo.rickandmortyapp.data.model.MainResponse;
 import kg.junesqo.rickandmortyapp.databinding.FragmentCharactersBinding;
 import kg.junesqo.rickandmortyapp.ui.characters_list.CharactersViewModel;
 
-public class CharactersFragment extends BaseFragment<FragmentCharactersBinding> {
+@AndroidEntryPoint
+public class CharactersFragment extends BaseFragment<FragmentCharactersBinding> implements OnItemClick<Integer> {
 
     private CharactersViewModel charactersViewModel;
     private CharacterAdapter adapter;
@@ -24,6 +27,7 @@ public class CharactersFragment extends BaseFragment<FragmentCharactersBinding> 
         super.onCreate(savedInstanceState);
         charactersViewModel = new ViewModelProvider(requireActivity()).get(CharactersViewModel.class);
         adapter = new CharacterAdapter();
+        adapter.setListener(this);
     }
 
     @Override
@@ -69,5 +73,11 @@ public class CharactersFragment extends BaseFragment<FragmentCharactersBinding> 
                 }
             }
         });
+    }
+
+    @Override
+    public void onItemClicked(Integer data) {
+        navController.navigate(CharactersFragmentDirections
+                .actionCharactersFragmentToCharactersDetailFragment(data));
     }
 }

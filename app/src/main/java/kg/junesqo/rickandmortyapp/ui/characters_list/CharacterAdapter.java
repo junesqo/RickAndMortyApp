@@ -12,12 +12,18 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import kg.junesqo.rickandmortyapp.common.OnItemClick;
 import kg.junesqo.rickandmortyapp.data.model.Character;
 import kg.junesqo.rickandmortyapp.databinding.ItemCharacterBinding;
 
 public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder> {
 
     private List<Character> characters = new ArrayList<>();
+    private OnItemClick<Integer> listener;
+
+    public void setListener(OnItemClick<Integer> listener) {
+        this.listener = listener;
+    }
 
     public void setCharacters(List<Character> characters) {
         this.characters = characters;
@@ -36,6 +42,12 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     @Override
     public void onBindViewHolder(@NonNull CharacterViewHolder holder, int position) {
         holder.onBind(characters.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClicked(characters.get(holder.getAdapterPosition()).getId());
+            }
+        });
     }
 
     @Override

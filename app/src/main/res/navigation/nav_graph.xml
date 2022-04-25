@@ -7,5 +7,20 @@
     <fragment
         android:id="@+id/charactersFragment"
         android:name="kg.junesqo.rickandmortyapp.ui.characters_list.CharactersFragment"
-        android:label="CharactersFragment" />
+        android:label="CharactersFragment" >
+        <action
+            android:id="@+id/action_charactersFragment_to_charactersDetailFragment"
+            app:destination="@id/charactersDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/charactersDetailFragment"
+        android:name="kg.junesqo.rickandmortyapp.ui.character_detail.CharacterDetailFragment"
+        android:label="CharactersDetailFragment">
+
+        <argument android:name="characterId"
+            app:argType="integer"
+            app:nullable="false"/>
+    </fragment>
+
 </navigation>
